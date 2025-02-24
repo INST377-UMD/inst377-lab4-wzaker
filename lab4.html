@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <title>INST377 - Lab 4</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 id="heading">INST377 - Lab 4</h1>
+    <div class="container">
+      <div class="left-column">
+        <div class="section" id="alert-section">
+          <form id="alert-form">
+            <label for="name-input">Name:</label>
+            <input
+              type="text"
+              id="name-input"
+              placeholder="Enter your name"
+              required
+            />
+            <button type="button" onclick="alertName()">Alert Me!</button>
+          </form>
+        </div>
+
+        <div class="section" id="text-tester-section">
+          <form id="validateText">
+            <label for="text-input">Text Tester:</label>
+            <input type="text" id="text-input" placeholder="Enter text" />
+            <button type="button" onclick="validateText()">
+              Validate Text
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="right-column">
+        <div class="section" id="color-section">
+          <button onclick="changeColor()">Change Color</button>
+        </div>
+
+        <div class="section" id="add-text-section">
+          <button onclick="addText()">Add Text</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Alert Name
+      function alertName() {
+        const name = document.getElementById("name-input").value;
+        if (name) {
+          alert(`Hi ${name}!`);
+        } else {
+          alert("Please enter your name.");
+        }
+      }
+
+      // Change Color
+      const body = document.body;
+      let isDefaultColor = true;
+      function changeColor() {
+        if (isDefaultColor) {
+          document.body.style.backgroundColor = "green";
+        } else {
+          document.body.style.backgroundColor = "#a9d8e7";
+        }
+        isDefaultColor = !isDefaultColor;
+      }
+
+      // Text Tester
+      function validateText() {
+        const text = document.getElementById("text-input").value;
+        const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+        if (validation.test(text)) {
+          alert("How about... nah");
+        }
+      }
+
+      // Add Text
+      function addText() {
+        const heading = document.getElementById("heading");
+        heading.textContent += " Add Text";
+      }
+    </script>
+  </body>
+</html>
